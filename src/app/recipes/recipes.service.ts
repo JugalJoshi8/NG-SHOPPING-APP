@@ -25,6 +25,9 @@ export class RecipesService {
     getRecipes() {
         return [...this.recipes];
     }
+    getRecipeById(id) {
+        return this.recipes[id];
+    }
 
     onRecipeSelect(recipe) {
         this.recipeSelected.emit(recipe);
