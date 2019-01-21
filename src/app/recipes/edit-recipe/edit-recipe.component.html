@@ -1,3 +1,31 @@
-<p>
-  edit-recipe works!
-</p>
+<div [formGroup] = "recipeForm">
+  <div class="row">
+    <div class="col-12 form-group">
+      <label for="name">Name</label>
+      <input id = "name" type="text" class = "form-control" formControlName = "name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 form-group">
+      <label for="imagePath">ImageURL</label>
+      <input id = "imagePath" type="text" class = "form-control" formControlName = "imagePath">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 form-group">
+      <label for="description">Description</label>
+      <textarea id = "description" rows="6" class = "form-control" formControlName = "description"></textarea>
+    </div>
+  </div>
+  <div formArrayName = "ingredients">
+    <div [formGroupName] = "i" class="row" *ngFor = "let ingredient of recipeForm.get('ingredients').controls; let i = index">
+      <div class="col-8">
+        <input type="text" formControlName = "name">
+      </div>
+      <div class="col-2">
+        <input type="text" formControlName = "amount">
+      </div>
+      <div class="col-2">X</div>
+    </div>
+  </div>
+</div>
