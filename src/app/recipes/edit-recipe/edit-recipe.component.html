@@ -1,5 +1,5 @@
 <div [formGroup] = "recipeForm">
-  <button [disabled] = "!recipeForm.valid" class="btn btn-primary">Save</button>
+  <button (click) = "onSubmit()" [disabled] = "!recipeForm.valid" class="btn btn-primary">Save</button>
   <button class="btn btn-danger">Cancel</button>
 
   <div class="row">

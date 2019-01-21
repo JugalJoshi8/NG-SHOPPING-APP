@@ -65,4 +65,13 @@ export class EditRecipeComponent implements OnInit {
     }))
   }
 
+  onSubmit() {
+    if(this.editMode) {
+      this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+    }
+    else {
+      this.recipeService.addRecipe(this.recipeForm.value);
+    }
+  }
+
 }
