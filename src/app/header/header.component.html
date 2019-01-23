@@ -14,9 +14,12 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item mr-2 pointer" routerLink = "signup">Register</li>
-        <li class="nav-item pointer" routerLink = "signin">Sign In</li>
-        <li class="nav-item dropdown" appDropdown>
+        <ng-template [ngIf] = "!isAutheticated()">
+            <li class="nav-item mr-2 pointer" routerLink = "signup">Register</li>
+            <li class="nav-item pointer" routerLink = "signin">Sign In</li>
+        </ng-template>
+        <li *ngIf = "isAutheticated()"><a class = "pointer" (click) = "logOut()">Log Out</a></li>
+        <li class="nav-item dropdown" appDropdown *ngIf = "isAutheticated()">
           <a style = "cursor: pointer" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Manage

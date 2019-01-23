@@ -51,16 +51,16 @@ export class RecipesService {
         this.recipeChanged.next(this.getRecipes());
     }
 
-    async fetchRecipes() {
-        const token = await this.authService.getToken();
+    fetchRecipes() {
+        const token = this.authService.getToken();
         this.http.get('https://myshoppinglist-c674b.firebaseio.com/recipes.json?auth=' + token).subscribe((res: Recipe[]) => {
             this.recipes = res;
             this.recipeChanged.next(this.getRecipes());
         });
     }
 
-    async saveRecipes() {
-        const token = await this.authService.getToken();
+    saveRecipes() {
+        const token = this.authService.getToken();
         this.http.put('https://myshoppinglist-c674b.firebaseio.com/recipes.json?auth=' + token, this.recipes).subscribe((res) => {
             console.log(res);
         })

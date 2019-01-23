@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {RecipesService} from './../recipes/recipes.service';
 @Component({
@@ -7,7 +8,7 @@ import {RecipesService} from './../recipes/recipes.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private recipeService: RecipesService) { }
+  constructor(private recipeService: RecipesService, private authService: AuthService) { }
 
   ngOnInit() {
     
@@ -19,6 +20,14 @@ export class HeaderComponent implements OnInit {
 
   fetchRecipes() {
     this.recipeService.fetchRecipes();
+  }
+
+  isAutheticated() {
+    return this.authService.getToken() != null;
+  }
+
+  logOut() {
+    this.authService.logOut();
   }
 
 }

@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth-guard.service';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { RouterModule, Routes} from '@angular/router';
@@ -10,8 +11,8 @@ import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.com
 
 const appRoutes : Routes = [
     {path: 'recipes', component: RecipesComponent, children: [
-      {path: 'new', component: EditRecipeComponent},
-      {path: ':id/edit', component: EditRecipeComponent},
+      {path: 'new', component: EditRecipeComponent, canActivate: [AuthGuard]},
+      {path: ':id/edit', component: EditRecipeComponent, canActivate: [AuthGuard]},
       {path: ':id', component: RecipeDetailComponent},
       {path: "", component: SelectRecipeComponent}
     ]},
