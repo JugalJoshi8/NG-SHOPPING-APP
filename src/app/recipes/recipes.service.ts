@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import {Recipe} from './recipe.model'; 
 import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class RecipesService {
     recipes: Recipe[] = [];
     recipeChanged = new Subject<Recipe[]>();
-    constructor(private shoppingListService: ShoppingListService) {
+    constructor(private shoppingListService: ShoppingListService, private http: HttpClient) {
         this.recipes = [
             new Recipe('test name',
              'test desc',
@@ -47,5 +48,18 @@ export class RecipesService {
     deleteRecipe(index: number) {
         this.recipes.splice(index, 1);
         this.recipeChanged.next(this.getRecipes());
+    }
+
+    fetchRecipes() {
+        this.http.get('https://myshoppinglist-c674b.firebaseio.com/recipes.json').subscribe((res: Recipe[]) => {
+            this.recipes = res;
+            this.recipeChanged.next(this.getRecipes());
+        });
+    }
+
+    saveRecipes() {
+        this.http.put('https://myshoppinglist-c674b.firebaseio.com/recipes.json', this.recipes).subscribe((res) => {
+            console.log(res);
+        })
     }
 }

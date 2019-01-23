@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {RecipesService} from './../recipes/recipes.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private recipeService: RecipesService) { }
 
   ngOnInit() {
     
+  }
+
+  saveRecipes() {
+    this.recipeService.saveRecipes();
+  }
+
+  fetchRecipes() {
+    this.recipeService.fetchRecipes();
   }
 
 }
