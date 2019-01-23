@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { ShoppingListService } from './../shopping-list/shopping-list.service';
 import { Injectable } from '@angular/core';
 import {Recipe} from './recipe.model'; 
@@ -9,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
 export class RecipesService {
     recipes: Recipe[] = [];
     recipeChanged = new Subject<Recipe[]>();
-    constructor(private shoppingListService: ShoppingListService, private http: HttpClient) {
+    constructor(private shoppingListService: ShoppingListService, private http: HttpClient, private authService: AuthService) {
         this.recipes = [
             new Recipe('test name',
              'test desc',
@@ -50,15 +51,17 @@ export class RecipesService {
         this.recipeChanged.next(this.getRecipes());
     }
 
-    fetchRecipes() {
-        this.http.get('https://myshoppinglist-c674b.firebaseio.com/recipes.json').subscribe((res: Recipe[]) => {
+    async fetchRecipes() {
+        const token = await this.authService.getToken();
+        this.http.get('https://myshoppinglist-c674b.firebaseio.com/recipes.json?auth=' + token).subscribe((res: Recipe[]) => {
             this.recipes = res;
             this.recipeChanged.next(this.getRecipes());
         });
     }
 
-    saveRecipes() {
-        this.http.put('https://myshoppinglist-c674b.firebaseio.com/recipes.json', this.recipes).subscribe((res) => {
+    async saveRecipes() {
+        const token = await this.authService.getToken();
+        this.http.put('https://myshoppinglist-c674b.firebaseio.com/recipes.json?auth=' + token, this.recipes).subscribe((res) => {
             console.log(res);
         })
     }

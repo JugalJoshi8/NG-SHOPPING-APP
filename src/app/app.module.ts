@@ -16,6 +16,8 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
 import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.component';
 import {RecipesService} from './recipes/recipes.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,9 @@ import {RecipesService} from './recipes/recipes.service';
     ShoppingEditItemComponent,
     AppDropdown,
     EditRecipeComponent,
-    SelectRecipeComponent
+    SelectRecipeComponent,
+    SignupComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,

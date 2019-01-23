@@ -1,3 +1,5 @@
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 import { RouterModule, Routes} from '@angular/router';
 import { NgModule } from '@angular/core';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -14,6 +16,8 @@ const appRoutes : Routes = [
       {path: "", component: SelectRecipeComponent}
     ]},
     {path: 'shopping-list', component: ShoppingListComponent},
+    {path: 'signin', component: SigninComponent},
+    {path: 'signup', component: SignupComponent},
     {path: '', redirectTo: 'recipes', pathMatch: 'full'}
 ];
 

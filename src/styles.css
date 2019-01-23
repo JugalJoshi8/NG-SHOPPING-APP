@@ -3,3 +3,7 @@
 input.ng-invalid.ng-touched {
     border: solid 1px red;
 }
+
+.pointer {
+    cursor: pointer;
+}
