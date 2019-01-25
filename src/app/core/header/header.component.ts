@@ -1,6 +1,6 @@
-import { AuthService } from './../auth/auth.service';
+import { AuthService } from './../../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import {RecipesService} from './../recipes/recipes.service';
+import {RecipesService} from './../../recipes/recipes.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
