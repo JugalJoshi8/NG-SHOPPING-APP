@@ -8,8 +8,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { ShoppingListService } from './shopping-list/shopping-list.service';
-import {RecipesService} from './recipes/recipes.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +22,6 @@ import {RecipesService} from './recipes/recipes.service';
     ShoppingListModule,
     AuthModule
   ],
-  providers: [ShoppingListService, RecipesService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
