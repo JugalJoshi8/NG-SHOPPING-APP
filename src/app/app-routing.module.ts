@@ -10,12 +10,6 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.component';
 
 const appRoutes : Routes = [
-    {path: 'recipes', component: RecipesComponent, children: [
-      {path: 'new', component: EditRecipeComponent, canActivate: [AuthGuard]},
-      {path: ':id/edit', component: EditRecipeComponent, canActivate: [AuthGuard]},
-      {path: ':id', component: RecipeDetailComponent},
-      {path: "", component: SelectRecipeComponent}
-    ]},
     {path: 'shopping-list', component: ShoppingListComponent},
     {path: 'signin', component: SigninComponent},
     {path: 'signup', component: SignupComponent},
